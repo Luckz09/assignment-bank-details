@@ -1,0 +1,20 @@
+h1
+{
+  text-align: center;
+  color:dodgerblue;
+
+}
+
+.mb-3
+{
+  float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 17px;
+}
+button
+{
+  background-color:aqua;
+}

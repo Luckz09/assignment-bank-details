@@ -1,0 +1,56 @@
+<h1>BANK'S DETAILS</h1>
+
+  <select [(ngModel)]="selectedCity" (ngModelChange)="selectedBankDetails($event)" >
+    <option value="MUMBAI">Mumbai</option>
+    <option value="JAIPUR">Jaipur</option>
+    <option value="BANGALORE">Bangalore</option>
+    <option value="CHENNAI">Chennai </option>
+    <option value="HYDERABAD">Hyderabad</option>
+  </select>
+
+&nbsp;&nbsp;&nbsp;<span>show</span>
+  <select [(ngModel)]="SlectedPageSize">
+  <option value="3">3</option>
+  <option value="6">6</option>
+  <option value="9">9</option>
+  <option value="12">12</option>
+  <option value="12">15</option>
+</select>
+<span>Entries</span>
+<div class="mb-3">
+  <input type="text" [(ngModel)]="searchterm" name="searchterm" class="form-control" placeholder="Search Here">
+</div>
+<!--Table-->
+<table class="table table-striped w-auto">
+  <!--Table head-->
+  <thead>
+    <tr>
+      <th>IFSC</th>
+      <th>Bank Name</th>
+      <th>Branch</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>District</th>
+      <th>State</th>
+    </tr>
+  </thead>
+  <!--Table head-->
+
+  <!--Table body-->
+  <tbody>
+    <tr class="table-info"  *ngFor="let item of bankslists | filter : searchterm | paginate: { itemsPerPage: SlectedPageSize, currentPage: p }">
+      <td>{{item.ifsc}}</td>
+      <td>{{item.bank_name}}</td>
+      <td>{{item.branch}}</td>
+      <td>{{item.address}}</td>
+      <td>{{item.city}}</td>
+      <td>{{item.district}}</td>
+      <td>{{item.state}}</td>
+      <td><button class="btn btn-danger">Open</button></td>
+      </tr>
+
+  </tbody>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  <!--Table body-->
+</table>
+<!--Table-->
